@@ -1,0 +1,22 @@
+.flash {
+  display: flex;
+  margin-top: 10px;
+  background-color: blue;
+  border-radius: 10px;
+  justify-content: space-between;
+  align-items: center;
+  color: aliceblue;
+}
+
+.field_with_errors {
+  display: inline-block;
+
+  label {
+    color: red;
+  }
+
+  input[type="text"],
+  textarea {
+    border: 1px solid red;
+  }
+}
