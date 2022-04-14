@@ -1,3 +1,16 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #78f;
+  color: aliceblue;
+  font-size: 24px;
+  border-radius: 10px;
+  padding: 10px 10px 10px 10px;
+  li {
+  }
+}
+
 .flash {
   display: flex;
   margin-top: 10px;
@@ -16,6 +29,8 @@
   }
 
   input[type="text"],
+  input[type="password"],
+  input[type="email"],
   textarea {
     border: 1px solid red;
   }
