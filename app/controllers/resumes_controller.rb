@@ -34,6 +34,7 @@ class ResumesController < ApplicationController
   end
 
   def destroy
+    @resume = Resume.find(params[:id])
     @resume.destroy
     redirect_to resumes_path, notice: "已刪除"
   end

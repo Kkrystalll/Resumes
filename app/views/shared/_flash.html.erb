@@ -1,5 +1,7 @@
 
-<div class="flash">
+<div class="flash" data-controller="flash">
+
   <div><%= notice %></div>
-  <button id="flashCloseBtn">X</button>
+  <button id="flashCloseBtn" data-action="click->flash#close">X</button>
+
 </div>

@@ -6,16 +6,16 @@ class Resume < ApplicationRecord
   # relationship
   belongs_to :user
 
-  # scope
-  # scope :published, -> { where(status: "published")}
+  scope :draft, -> { where( status: "draft") }
+  scope :published, -> { where(status: "published")}
 
-  def self.published
-    where(status: "published")
-  end
+  # def self.published
+  #   where(status: "published")
+  # end
 
-  def self.draft
-    where(status: "draft")
-  end
+  # def self.draft
+  #   where(status: "draft")
+  # end
 
   def self.all_status
     [

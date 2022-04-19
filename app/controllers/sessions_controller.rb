@@ -12,6 +12,6 @@ class SessionsController < ApplicationController
   def destroy
     session[:session] = nil
 
-    redirect_to root_path, notice: "登出成功"
+    redirect_to my_resumes_path, notice: "登出成功"
   end
 end
