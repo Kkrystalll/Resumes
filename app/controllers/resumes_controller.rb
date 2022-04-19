@@ -1,6 +1,6 @@
 class ResumesController < ApplicationController
   before_action :find_resume, only: [:show]
-  before_action :find_my_resume, only: [:edit, :update, :destroy]
+  before_action :find_my_resume, only: [:edit, :update, :destroy, :pin]
   before_action :authenticate_user, extend: [:index, :show]
 
   def  index
@@ -31,6 +31,16 @@ class ResumesController < ApplicationController
     # rescue 
     #   render html: "打錯"
     # end
+  end
+
+  def pin
+    # current_user.resumes.each do |re|
+    #   re.update(pinned: false)
+    # end
+
+    current_user.resumes.update_all("pinned = false")
+    @resume.update(pinned: true)
+    redirect_to my_resumes_path, notice: "預設履歷設定成功"
   end
 
   def destroy

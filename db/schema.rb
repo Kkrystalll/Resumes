@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_19_081045) do
+ActiveRecord::Schema.define(version: 2022_04_19_090920) do
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string "slug", null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2022_04_19_081045) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
     t.string "slug"
+    t.boolean "pinned", default: false
     t.index ["slug"], name: "index_resumes_on_slug", unique: true
     t.index ["user_id"], name: "index_resumes_on_user_id"
   end
