@@ -1,8 +1,8 @@
 <h1><%= @resume.title %>履歷</h1>
 
-<article data-controller="markdown-viewer">
-  <%= @resume.content %>
-</article>
+
+
+<%= markdown(@resume.content) %>
 
 <%= link_to '修改', edit_resume_path(@resume) %>
 

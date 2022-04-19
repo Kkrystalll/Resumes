@@ -1,4 +1,9 @@
 class UsersController < ApplicationController
+  def default_resume
+    @user = User.find_by!(username: params[:user_id])
+    @resume = @user.default_resume
+  end
+
   def sign_up
     @user = User.new
   end
