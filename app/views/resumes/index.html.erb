@@ -3,7 +3,11 @@
 
 
 <%# link_to '新增履歷', new_resume_path %>
+<% if policy(:resume).new? %>
 <%= link_to '我的履歷', my_resumes_path %>
+<% end %>
+
 <ul>
   <%= render @resumes %>
+  
 </ul>

@@ -9,7 +9,9 @@ class Resume < ApplicationRecord
   # relationship
   belongs_to :user
 
-  has_one_attached :mugshot
+  has_one_attached :mugshot do |image|
+    image.avatar.variant(resize_to_limit: [100, 100])
+  end
 
   scope :draft, -> { where( status: "draft") }
   scope :published, -> { where(status: "published")}

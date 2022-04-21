@@ -1,7 +1,7 @@
 <h1><%= @resume.title %>履歷</h1>
 
-<%= image_tag @resume.mugshot if @resume.mugshot.attached? %>
-<%= link_to '看照片', @resume.mugshot if @resume.mugshot.attached? %>
+<%= image_tag @resume.mugshot  if @resume.mugshot.attached? %>
+<%= link_to '看照片', @resume.mugshot  if @resume.mugshot.attached? %>
 
 
 <%= markdown(@resume.content) %>
