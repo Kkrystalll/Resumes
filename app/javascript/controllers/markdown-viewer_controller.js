@@ -4,7 +4,7 @@ import { marked } from "marked";
 export default class extends Controller {
   static targets = ["output"];
   initialize() {
-    this.origContent = "";
+    this.origContent = null;
   }
 
   connect() {

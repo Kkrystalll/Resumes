@@ -38,7 +38,7 @@ class ResumesController < ApplicationController
     #   re.update(pinned: false)
     # end
 
-    current_user.resumes.update_all("pinned = false")
+    current_user.resumes.update_all(pinned: false)
     @resume.update(pinned: true)
     redirect_to my_resumes_path, notice: "預設履歷設定成功"
   end
@@ -55,7 +55,7 @@ class ResumesController < ApplicationController
   def update
 
     if @resume.update(resume_params)
-      redirect_to resumes_path, notice: "更新成功"
+      redirect_to my_resumes_path, notice: "更新成功"
     else
       render :edit
     end
@@ -67,7 +67,7 @@ class ResumesController < ApplicationController
 
   private
     def resume_params
-      params.require(:resume).permit(:title, :content, :status)
+      params.require(:resume).permit(:title, :content, :status, :mugshot)
     end
 
     def find_resume

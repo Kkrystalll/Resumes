@@ -9,6 +9,8 @@ class Resume < ApplicationRecord
   # relationship
   belongs_to :user
 
+  has_one_attached :mugshot
+
   scope :draft, -> { where( status: "draft") }
   scope :published, -> { where(status: "published")}
 

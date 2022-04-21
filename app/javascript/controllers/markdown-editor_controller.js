@@ -5,7 +5,7 @@ import "easymde/dist/easymde.min.css";
 export default class extends Controller {
   static targets = ["output"];
   initialize() {
-    this.editor = null;
+    this.editor = "";
   }
 
   connect() {
@@ -19,6 +19,6 @@ export default class extends Controller {
   disconnect() {
     this.editor.toTextArea();
     this.editor.cleanup();
-    this.editor = null;
+    this.editor = "";
   }
 }
