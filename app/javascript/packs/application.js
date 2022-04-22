@@ -4,6 +4,7 @@ import * as ActiveStorage from "@rails/activestorage";
 import "channels";
 import "scripts";
 import "controllers";
+import "styles";
 
 Rails.start();
 Turbolinks.start();

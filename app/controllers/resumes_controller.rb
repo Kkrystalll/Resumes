@@ -4,13 +4,13 @@ class ResumesController < ApplicationController
   before_action :authenticate_user, extend: [:index, :show]
 
   def  index
-    flash[:notice] = "1111"
-    
-    if user_signed_in? && current_user.role != "user"
-      @resumes = Resume.published.find_by(pinned: true)
-    else
-      @resumes = Resume.published
-    end
+    # flash[:notice] = "1111"
+    @resumes = Resume.published
+    # if user_signed_in? && current_user.role != "user"
+    #   @resumes = Resume.published.find_by(pinned: true)
+    # else
+    #   @resumes = Resume.published
+    # end
   end
 
   def  new
