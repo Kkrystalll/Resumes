@@ -52,15 +52,16 @@ class ApplicationPolicy
   end
 
   private
-    def internal_users
-      user && user.role.in?(["vendor","admit"])
-    end
 
-    def interviewee
-      user && user.role === "user"
-    end
+  def internal_users
+    user&.role&.in?(%w[vendor admit])
+  end
 
-    def vendor
-      user && user.role === "vendor"
-    end
+  def interviewee
+    user && user.role == 'user'
+  end
+
+  def vendor
+    user && user.role == 'vendor'
+  end
 end

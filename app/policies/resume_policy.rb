@@ -1,5 +1,6 @@
-class ResumePolicy < ApplicationPolicy
+# frozen_string_literal: true
 
+class ResumePolicy < ApplicationPolicy
   def index?
     internal_users || vendor
   end

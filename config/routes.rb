@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  get "@:user_id", to: "users#default_resume"
-  get "@:user_id/:id", to: "resumes#show", as: "user_resume"
-  
+  get '@:user_id', to: 'users#default_resume'
+  get '@:user_id/:id', to: 'resumes#show', as: 'user_resume'
 
   resources :resumes do
     collection do
@@ -12,18 +13,18 @@ Rails.application.routes.draw do
       patch :pin
     end
   end
-  
+
   resource :users, only: [:create] do
     get :sign_up
     get :sign_in
   end
 
-  resource :sessions, only: [:create, :destroy]
+  resource :sessions, only: %i[create destroy]
   # get "users/sign_up", to: "users#new"
-  
+
   namespace :admin do
     resources :vendors, except: [:show]
   end
 
-  root "resumes#index"
+  root 'resumes#index'
 end

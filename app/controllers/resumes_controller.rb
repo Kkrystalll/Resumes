@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 class ResumesController < ApplicationController
   before_action :find_resume, only: [:show]
-  before_action :find_my_resume, only: [:edit, :update, :destroy, :pin]
-  before_action :authenticate_user, extend: [:index, :show]
+  before_action :find_my_resume, only: %i[edit update destroy pin]
+  before_action :authenticate_user, extend: %i[index show]
 
-  def  index
+  def index
     # flash[:notice] = "1111"
     @resumes = Resume.published
     # if user_signed_in? && current_user.role != "user"
@@ -13,7 +15,7 @@ class ResumesController < ApplicationController
     # end
   end
 
-  def  new
+  def new
     @resume = Resume.new
   end
 
@@ -24,7 +26,7 @@ class ResumesController < ApplicationController
     @resume = current_user.resumes.new(resume_params)
 
     if @resume.save
-      redirect_to resumes_path, notice: "新增成功"
+      redirect_to resumes_path, notice: '新增成功'
     else
       render :new
     end
@@ -33,7 +35,7 @@ class ResumesController < ApplicationController
   def show
     # begin
     #   @resume = Resume.find(params[:id])
-    # rescue 
+    # rescue
     #   render html: "打錯"
     # end
   end
@@ -45,22 +47,20 @@ class ResumesController < ApplicationController
 
     current_user.resumes.update_all(pinned: false)
     @resume.update(pinned: true)
-    redirect_to my_resumes_path, notice: "預設履歷設定成功"
+    redirect_to my_resumes_path, notice: '預設履歷設定成功'
   end
 
   def destroy
     @resume = Resume.find(params[:id])
     @resume.destroy
-    redirect_to resumes_path, notice: "已刪除"
+    redirect_to resumes_path, notice: '已刪除'
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
-
     if @resume.update(resume_params)
-      redirect_to my_resumes_path, notice: "更新成功"
+      redirect_to my_resumes_path, notice: '更新成功'
     else
       render :edit
     end
@@ -71,20 +71,21 @@ class ResumesController < ApplicationController
   end
 
   private
-    def resume_params
-      params.require(:resume).permit(:title, :content, :status, :mugshot)
-    end
 
-    def find_resume
-      if user_signed_in?
-        @resume = current_user.resumes.friendly.find(params[:id])
-      else
-        @resume = Resume.published.friendly.find(params[:id])
-      end
-    end
+  def resume_params
+    params.require(:resume).permit(:title, :content, :status, :mugshot)
+  end
 
-    def find_my_resume
-      # @resume = Resume.find_by!(id: params[:id], user_id: current_user.id)
-      @resume = current_user.resumes.friendly.find(params[:id])
-    end
+  def find_resume
+    @resume = if user_signed_in?
+                current_user.resumes.friendly.find(params[:id])
+              else
+                Resume.published.friendly.find(params[:id])
+              end
+  end
+
+  def find_my_resume
+    # @resume = Resume.find_by!(id: params[:id], user_id: current_user.id)
+    @resume = current_user.resumes.friendly.find(params[:id])
+  end
 end
